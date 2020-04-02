@@ -2147,6 +2147,7 @@ section {
 
 @media (max-width: 991px) {
     .menu-sidebar2 {
+        display: inline;
         top: 0;
         right: -300px;
         left: auto;

@@ -12,8 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('/welcome');
 });
+
 
 Route::get('/about', function () {
     return view('about');
@@ -28,9 +29,21 @@ Route::get('/invest', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+Route::get('/dashboard.table', function(){
+    return view('dashboard.table');
+});
 
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard.home', 'HomeController@index')->name('dashboard.home');
+// Route::get('/dashboard.table', 'HomeController@index')->name('dashboard.home');
+
+
+
+Route::group(['middleware' => ['auth', 'admin']], function(){
+ 
+    Route::get('/admindashboard.home', 'HomeController@adminindex')->name('admindashboard.home');
+        
+});

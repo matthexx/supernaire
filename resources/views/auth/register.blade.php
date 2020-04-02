@@ -111,15 +111,17 @@
 						<span class="focus-input100"></span>
 					</div>
 
-					{{-- <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter Email">
-						<input  id="phone" type="number" class="input100 form-control @error('number') is-invalid @enderror" name="phone" placeholder="Phone number" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
-						@error('number')
+
+					<div class="wrap-input100 validate-input" data-validate = "Please enter referral code">
+						<input id="referral" class="input100 form-control @error('referral') is-invalid @enderror" type="text" name="referral" placeholder="Referral code" required autocomplete="new-referral">
+						@error('referral')
 								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>
 								</span>
 							@enderror
 						<span class="focus-input100"></span>
-					</div> --}}
+					</div>
+
 
 					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
 						<input id="password" class="input100 form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="Password" required autocomplete="new-password">
