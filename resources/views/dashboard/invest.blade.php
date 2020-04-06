@@ -49,7 +49,7 @@
                     </a>
                 </div>
                 <div class="menu-sidebar2__content js-scrollbar1">
-                    {{-- <div class="account2">
+                    <div class="account2">
                         <div class="image img-cir img-120">
                             <img src="/images/icon/avatar-big-01.jpg" alt="John Doe" />
                         </div>
@@ -64,7 +64,7 @@
                                             @csrf
                                         </form>
                    
-                </div> --}}
+                </div>
                     <nav class="navbar-sidebar2">
                         <ul class="list-unstyled navbar__list">
                             <li class="active has-sub">
@@ -179,15 +179,8 @@
                                             <i class="zmdi zmdi-email"></i>Email</a>
                                     </div>
                                     <div class="account-dropdown__item">
-                                        <a href="#"href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                          document.getElementById('logout-form').submit();">
-                                             <i class="zmdi zmdi-power"></i> {{ __('Sign out') }} </a>
-                                        
-                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                             @csrf
-                                         </form>
-                                         
+                                        <a href="#">
+                                            <i class="zmdi zmdi-notifications"></i>Notifications</a>
                                     </div>
                                 </div>
                             </div>
@@ -199,7 +192,7 @@
        
 
         <!-- BREADCRUMB-->
-        {{-- <section class="au-breadcrumb m-t-75">
+        <section class="au-breadcrumb m-t-75">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <div class="row">
@@ -223,91 +216,18 @@
                     </div>
                 </div>
             </div>
-        </section> --}}
+        </section>
         <!-- END BREADCRUMB-->
 
-      
-            <!-- DATA TABLE-->
-            <div class="table-responsive" style="margin-top:70px">
-                <table class="table table-borderless table-data3">
-                    <thead>
-                        <tr>
-                            <th>Investments</th>
-                            <th>Referral</th>
-                            <th>description</th>
-                            <th>status</th>
-                            <th>Amount Earned</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>FINANCIAL PLAN</td>
-                            <td>0/12</td>
-                            <td><p>-</p></td>
-                            <td class="process">Inactive</td>
-                            <td>₦0,000,000</td>
-                        </tr>
-                        <tr>
-                            <td>COOPORATIVE SYSTEM</td>
-                            <td>N/A</td>
-                            <td>-</td>
-                            <td class="process">Inactive</td>
-                            <td>₦0,000,000</td>
-                        </tr>
-                        <tr>
-                            <td>NETWORKING SYSTEM</td>
-                            <td>N/A</td>
-                            <td>-</td>
-                            <td class="denied">N/A</td>
-                            <td>₦0,000,000</td>
-                        </tr>
-                        <tr>
-                            <td>MENTORING SYSTEM </td>
-                            <td>N/A</td>
-                            <td>-</td>
-                            <td class="denied">N/A</td>
-                            <td>₦0,000,000</td>
-                        </tr>
-                        <tr>
-                            <td>INVESTMENT PLAN</td>
-                            <td>N/A</td>
-                            <td>-</td>
-                            <td class="process">Inactive</td>
-                            <td>₦0,000,000</td>
-                        </tr>
-                        <tr>
-                            <td>EDUCATIONAAL PLAN</td>
-                            <td>N/A</td>
-                            <td>-</td>
-                            <td class="denied">N/A</td>
-                            <td>₦0,000,000</td>
-                        </tr>
-                        <tr>
-                            <td>BUSINESS PLAN</td>
-                            <td>N/A</td>
-                            <td>-</td>
-                            <td class="process">Inactive</td>
-                            <td>₦0,000,000</td>
-                        </tr>
-                        <tr>
-                            <td>RETIREMENT PLAN</td>
-                            <td>N/A</td>
-                            <td>-</td>
-                            <td class="process">Inactive</td>
-                            <td>₦0,000,000</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- MAIN CONTENT-->
+                
+            <!-- END MAIN CONTENT-->
+                </div>
             </div>
-            <!-- END DATA TABLE-->
-
-            </div>
-    </div>
-
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2020 All rights reserved.  <a href="#">Supernaire<a>.</p>
+                                    <p>Copyright © 2020 All rights reserved. Supernaire <a href="#">Supernaire</a>.</p>
                                 </div>
                             </div>
                         </div>

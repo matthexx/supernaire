@@ -57,46 +57,46 @@
                     </div>
                   
                     <h4 class="name">{{ Auth::user()->name }}</h4>
-                    <a style="margin-left:120px" class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Sign out') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                    <button type="submit" style="margin-left:120px" class="dropdown-item" href="{{ route('logout') }}">
+                        {{ __('Sign out') }}
+                    </button>
+                </form>
                
             </div>
                 <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="/home">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                              
                             </a>
                            
                         </li>
                         <li>
-                            <a href="/dashboard.table">
+                            <a href="/dashboard.showinvestment">
                                 <i class="fas fa-chart-bar"></i>Investments</a>
                         </li>
                         <li>
-                            <a href="{{ route('logout') }}">
+                            <a href="/dashboard.referrals">
                                 <i class="fas fa-group"></i>Referrals</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-trophy"></i>Earnings
+                                <i class="fas fa-trophy"></i>Earnings/Award
+                            </a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-database"></i>Withdraw
                             </a>
                         </li>
 
                         <li>
-                            <a href="calendar.html">
-                                <i class="fas fa-calendar-alt"></i>Updates</a>
-                        </li>
-
-                        <li>
-                            <a href="alert.html">
+                            <a href="#">
                                 <i class="far fa-bell"></i>Status</a>
                         </li>
 
@@ -171,16 +171,9 @@
                                             <a href="#">
                                                 <i class="zmdi zmdi-settings"></i>Setting</a>
                                         </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                        </div>
+                                     
                                     </div>
                                     <div class="account-dropdown__body">
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-email"></i>Email</a>
-                                        </div>
                                         <div class="account-dropdown__item">
                                             <a href="#"href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
@@ -238,91 +231,22 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
+                            @foreach($investments as $investment)
                             <div class="col-md-6 col-lg-3">
                                 <div class="statistic__item">
-                                    <h2 class="number">₦0,000,000</h2>                                    <span class="desc">Cooporative System</span>
+                                    <h2 class="number">₦{{ $investment->amount }}</h2>                           
+                                    <span class="desc">{{ $investment->name }}</span>
                                     <div class="icon">
                                         <i class="zmdi zmdi-account-o"></i>
                                     </div>
-                                    <button style="margin-top:25px; float:left; background-color:gray; color:#fff" class="btn"> Invest </button>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="statistic__item">
-                                    <h2 class="number">₦0,000,000</h2>                                    <span class="desc">Networking System</span>
-                                    <div class="icon">
-                                        <i class="zmdi zmdi-shopping-cart"></i>
+                                    <form>
+                                        @csrf
+                                        <button style="margin-top:25px; float:left; padding:4px; border:0px; background-color:#ffcc00; color:#000" type="button" onclick="payWithPaystack(<?php echo $investment->id;?>, <?php echo $investment->amount.(00);?>)">Invest</button>
+                                      </form>
                                     </div>
-                                    <button style="margin-top:25px; float:left; background-color:gray; color:#fff" class="btn"> Invest </button>
-                                </div>
                             </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="statistic__item">
-                                    <h2 class="number">₦0,000,000</h2>
-                                    <span class="desc">Mentoring System</span>
-                                    <div class="icon">
-                                        <i class="zmdi zmdi-calendar-note"></i>
-                                    </div>
-                                    <button style="margin-top:25px; background-color:gray; color:#fff" class="btn"> Invest </button>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="statistic__item">
-                                    <h2 class="number">₦0,000,000</h2>
-                                    <span class="desc">Financial Plan</span>
-                                    <div class="icon">
-                                        <i class="zmdi zmdi-money"></i>
-                                    </div>
-                                    <button style="margin-top:25px;" class="btn btn-success"> Invest </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-          
-            <section class="statistic">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item">
-                                <h2 class="number">₦0,000,000</h2>                                <span class="desc">Investment Plan</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-account-o"></i>
-                                </div>
-                                <button style="margin-top:25px; float:left; background-color:gray; color:#fff" class="btn"> Invest </button>
-
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item">
-                                <h2 class="number">₦0,000,000</h2>                                <span class="desc">Educationaal Plan</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-shopping-cart"></i>
-                                </div>
-                                <button style="margin-top:25px; float:left; background-color:gray; color:#fff" class="btn"> Invest </button>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item">
-                                <h2 class="number">₦0,000,000</h2>                                <span class="desc">Business Plan</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-calendar-note"></i>
-                                </div>
-                                <button style="margin-top:25px; float:left; background-color:gray; color:#fff" class="btn"> Invest </button>
-
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item">
-                                <h2 class="number">₦0,000,000</h2>                                <span class="desc">Retirement Plan</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-money"></i>
-                                </div>
-                                <button style="margin-top:25px; float:left; background-color:gray; color:#fff" class="btn"> Invest </button>
-                            </div>
-                        </div>
+                            @endforeach
+                           
                     </div>
                 </div>
             </div>
@@ -345,6 +269,12 @@
         </div>
 
     </div>
+
+
+   
+    
+
+
 
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
@@ -373,6 +303,54 @@
 
     <!-- Main JS-->
     <script src="js/user.js"></script>
+
+
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+      <script >
+        var orderObj = {
+          email_prepared_for_paystack: "<?php echo \Auth::user()->email;?>"
+        
+        //   other params you want to save
+        };
+        
+        //function submit(form, event){
+          //  event.preventDefault();
+           // payWithPaystack();
+       // }
+
+        
+      
+        function payWithPaystack($investmentId, $amount){
+           console.log($investmentId);
+           console.log($amount); 
+          var handler = PaystackPop.setup({
+            key: 'pk_test_f9c5fbf1abaef428f6b1b09a3affc7d81a90a3a2',
+            email: orderObj.email_prepared_for_paystack,
+            amount: $amount,
+            
+            callback: function(response){
+                var posting = $.post( '/processInvestment', orderObj );
+
+                posting.done(function( data ) {
+         
+                    payWithPaystack(data);
+                        });
+             posting.fail(function( data ) { /* and if it failed... */ }); 
+              var verifying = $.get( '/verify.php?reference=' + response.reference);
+              verifying.done(function( data ) { /* give value saved in data */ });
+              document.getElementById("submitInvest").submit();
+
+            },
+
+            onClose: function(){
+              alert('Click "Pay now" to retry payment.');
+            }
+          });
+          handler.openIframe();
+        }
+      </script>
+
 
 </body>
 

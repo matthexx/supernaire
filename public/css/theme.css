@@ -2145,8 +2145,10 @@ section {
     padding: 0 35px;
 }
 
+  
+
 @media (max-width: 991px) {
-    .menu-sidebar2 {
+    /* .menu-sidebar2 {
         display: inline;
         top: 0;
         right: -300px;
@@ -2158,8 +2160,12 @@ section {
 
     .menu-sidebar2.show-sidebar {
         right: 0;
-    }
+    } */
+
+  
+
 }
+
 
 .account2 {
     padding: 38px;
