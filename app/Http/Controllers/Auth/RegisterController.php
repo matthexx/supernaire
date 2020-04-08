@@ -95,7 +95,16 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'referral' => $data['referral'],
             'password' => Hash::make($data['password']),
+
         ]);
+
+        $userdata = Referral::select([
+            'userId'  => $user->referral,
+            'verifiedUserId' => $user->id
+        ]);
+
+
+
 
         $verifyUser = verifyEmail::create([
             'user_id' => $user->id,
