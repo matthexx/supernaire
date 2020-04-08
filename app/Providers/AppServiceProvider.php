@@ -16,7 +16,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register any application services. 
      *
      * @return void
      */
@@ -30,21 +30,23 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        VerifyEmail::toMailUsing(function ($notifiable){
-            $verifyUrl = URL::temporarySignedRoute(
-                'verification.verify',
-                Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
-                ['id'=>$notifiable->getKey(), 'hash' => 'fijbubugiigbiugbiugig']
-            );
-            // dd($verifyUrl);
-            // return new EmailVerification($verifyUrl, $notifiable);
-
-            return (new MailMessage)
-                ->subject('Welcome!') ->line('something')->action('Verify', $verifyUrl);
-    });
+    // public function boot()
+    // {
+    //     VerifyEmail::toMailUsing(function ($notifiable){
+    //         $verifyUrl = URL::temporarySignedRoute(
+    //             'verification.verify',
+    //             Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
+    //             ['id'=>$notifiable->getKey(), 'hash' => 'fijbubugiigbiugbiugig']
+    //         );
+    //         // dd($verifyUrl);
+    //         return (new MailMessage)
+    //             ->subject('Welcome!') ->line('something')->action('Verify', $verifyUrl);
+                
 
 
-    }
+    // });
+
+
+    // }
+    
 }

@@ -14,31 +14,29 @@ class EmailVerification extends Mailable
     use Queueable, SerializesModels;
 
 
-    protected $user;
+    public $user;
     public $url;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($url, $user)
-    {
-        $this->url = $url;  
-        $this->user = $user;
-    }
+    // public function __construct($url, $user)
+    // {
+    //     $this->url = $url;  
+    //     $this->user = $user;
+    // }
 
     /**
      * Build the message.
      *
      * @return $this
      */
-    public function build()
-    {
-        return $this->markdown('emails.verify-email');
+    // public function build()
+    // {
+    //     return $this->markdown('emails.verify-email');
 
-        // (new MailMessage)
-        //         ->subject('Welcome!')
-        //         ->markdown('emails.verify-email', ['user' => $this->user, 'verifyUrl' => $this->verifyUrl]);
+        
 
-    }
+    // }
 }

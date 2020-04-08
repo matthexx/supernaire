@@ -7,10 +7,25 @@
 @endslot
 
 {{-- Body --}}
-Welcome
-We are glad you are here, kindly activate your account by clicking the button below.
-<br>
-<button class="btn btn-success"><a href="{{ route('login') }}"></a>Verify</button>
+{{-- @component('mail::message') --}}
+
+Hello 
+
+Thank you for registering!
+
+{{-- @component('mail::button', ['url' => $verifyUrl ?? ''])
+Verify Email
+@endcomponent --}}
+
+
+{{-- <a href="{{url($verifyUrl)}}" class="btn btn-primary" >Verify Email</a> --}}
+
+
+
+Regards,<br>
+{{ config('app.name') }}
+
+{{-- @endcomponent --}}
 
 {{-- Footer --}}
 @slot('footer')

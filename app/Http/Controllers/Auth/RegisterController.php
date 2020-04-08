@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-
 use DB;
 use Mail;
-use Illuminate\Http\Request;
+use App\User;
 use App\Mail\verifyUser;
+use Illuminate\Http\Request;
 use App\VerifyUser as verifyEmail;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -35,7 +36,9 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/login';
+
 
     /**
      * Create a new controller instance.
@@ -63,6 +66,22 @@ class RegisterController extends Controller
         ]);
     }
 
+
+    //create a new method that overrides default register 
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+       // $this->guard()->login($user);
+    //this commented to avoid register user being auto logged in
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath())->with('messge', 'Welcome home');
+    }   
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -85,29 +104,30 @@ class RegisterController extends Controller
             $email = $user->email;
             $subject = "Verify Email";
 
-        // Mail::to($email)->send(new VerifyUser($subject));
-
         return $user;
     }
 
-    public function VerifyUser($token)
-    {
-        $verifyUser = verifyEmail::where('token', $token)->first();
-        if(isset($verifyUser) ){
-            $user = $verifyUser->user;
-            if(!$user->verified) {
-                $verifyUser->user->verified = 1;
-                $verifyUser->user->save();
-                $status = "Your e-mail is verified. You can now login.";
-            }else{
-                $status = "Your e-mail is already verified. You can now login.";
-            }
-        }else{
-            return redirect('/login')->with('warning', "Sorry your email cannot be identified.");
-        }
 
-        return redirect('/login')->with('status', $status);
-    }
+
+
+    // public function VerifyUser($token)
+    // {
+    //     $verifyUser = verifyEmail::where('token', $token)->first();
+    //     if(isset($verifyUser) ){
+    //         $user = $verifyUser->user;
+    //         if(!$user->verified) {
+    //             $verifyUser->user->verified = 1;
+    //             $verifyUser->user->save();
+    //             $status = "Your e-mail is verified. You can now login.";
+    //         }else{
+    //             $status = "Your e-mail is already verified. You can now login.";
+    //         }
+    //     }else{
+    //         return redirect('/login')->with('warning', "Sorry your email cannot be identified.");
+    //     }
+
+    //     return redirect('/login')->with('status', $status);
+    // }
 
 
 }

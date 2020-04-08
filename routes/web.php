@@ -31,6 +31,7 @@ Auth::routes();
 Route::get('/email/verify/{id}', 'RegisterController@verifyUser')->name('verification.verify');
 
 
+
 Route::group(['middleware' => 'auth'], function() {
 //dashboardfront
 Route::view('/dashboard.referrals', 'dashboard.referrals');
